@@ -12,7 +12,7 @@ pub struct SetTreasury<'info> {
 
     #[account(
       mut,
-      seeds = [GLOBAL_STATE_SEED],
+      seeds = [GLOBAL_STATE_SEED, authority.key().as_ref()],
       bump,
       has_one = authority
     )]
@@ -22,10 +22,11 @@ pub struct SetTreasury<'info> {
     pub rent: Sysvar<'info, Rent>,
 }
 
-pub fn handle(ctx: Context<SetTreasury>, treasury_key: Pubkey) -> Result<()> {
+pub fn handle(ctx: Context<SetTreasury>, treasury_key: Pubkey, dev_fee: u64) -> Result<()> {
     let accts = ctx.accounts;
 
     accts.global_state.treasury = treasury_key;
-    accts.global_state.dev_fee = 500;
+    accts.global_state.dev_fee = dev_fee;
+
     Ok(())
 }

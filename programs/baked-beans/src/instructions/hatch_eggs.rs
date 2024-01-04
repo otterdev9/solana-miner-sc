@@ -8,7 +8,7 @@ pub struct HatchEggs<'info> {
     pub user: Signer<'info>,
     #[account(
       mut,
-      seeds = [GLOBAL_STATE_SEED],
+      seeds = [GLOBAL_STATE_SEED, global_state.authority.as_ref()],
       bump,
     )]
     pub global_state: Account<'info, GlobalState>,

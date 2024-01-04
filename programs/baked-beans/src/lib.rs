@@ -8,9 +8,9 @@ pub mod utils;
 
 use instructions::*;
 
-declare_id!("8DSPdCqjTqTz4NEMqXcdpXqAtQ2HErBppNVukqu2NpwJ");
+declare_id!("4Krw6BFxF5GN7ud6ui6Un8kdmL56wsL71BxtqxoAo9ro");
 #[program]
-pub mod baked_beans {
+pub mod sol_miner {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>, new_authority: Pubkey) -> Result<()> {
@@ -37,7 +37,7 @@ pub mod baked_beans {
         start_mine::handle(ctx)
     }
 
-    pub fn set_treasury(ctx: Context<SetTreasury>, key: Pubkey) -> Result<()> {
-        set_treasury::handle(ctx, key)
+    pub fn set_treasury(ctx: Context<SetTreasury>, key: Pubkey, dev_fee: u64) -> Result<()> {
+        set_treasury::handle(ctx, key, dev_fee)
     }
 }

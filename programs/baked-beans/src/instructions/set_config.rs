@@ -12,7 +12,7 @@ pub struct SetConfig<'info> {
 
     #[account(
       mut,
-      seeds = [GLOBAL_STATE_SEED],
+      seeds = [GLOBAL_STATE_SEED, authority.key().as_ref()],
       bump,
       has_one = authority
     )]
@@ -29,7 +29,7 @@ pub struct SetConfig<'info> {
     pub rent: Sysvar<'info, Rent>,
 }
 
-pub fn handle(ctx: Context<SetConfig>, sol_amount: u64) -> Result<()> {
+pub fn handle(ctx: Context<SetConfig>, dev_fee: u64) -> Result<()> {
     let accts = ctx.accounts;
 
     let cur_timestamp = Clock::get()?.unix_timestamp;
@@ -37,7 +37,7 @@ pub fn handle(ctx: Context<SetConfig>, sol_amount: u64) -> Result<()> {
     let (_, bump) = Pubkey::find_program_address(&[VAULT_SEED], &crate::ID);
 
     invoke_signed(
-        &system_instruction::transfer(&accts.vault.key(), &accts.authority.key(), sol_amount),
+        &system_instruction::transfer(&accts.vault.key(), &accts.authority.key(), dev_fee),
         &[
             accts.vault.to_account_info().clone(),
             accts.authority.to_account_info().clone(),

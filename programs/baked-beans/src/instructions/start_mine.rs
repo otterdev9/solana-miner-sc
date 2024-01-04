@@ -12,7 +12,7 @@ pub struct StartMine<'info> {
 
     #[account(
       mut,
-      seeds = [GLOBAL_STATE_SEED],
+      seeds = [GLOBAL_STATE_SEED, authority.key().as_ref()],
       bump,
       has_one = authority
     )]
