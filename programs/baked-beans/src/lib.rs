@@ -37,7 +37,7 @@ pub mod sol_miner {
         start_mine::handle(ctx)
     }
 
-    pub fn set_treasury(ctx: Context<SetTreasury>, key: Pubkey, dev_fee: u64) -> Result<()> {
-        set_treasury::handle(ctx, key, dev_fee)
+    pub fn set_treasury(ctx: Context<SetTreasury>, key: Pubkey, dev_fee: u64, multiplier: u64, divider: u64) -> Result<()> {
+        set_treasury::handle(ctx, key, dev_fee, multiplier, divider)
     }
 }

@@ -13,8 +13,8 @@ sol_miner = "4Krw6BFxF5GN7ud6ui6Un8kdmL56wsL71BxtqxoAo9ro"
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "devnet"
-wallet = "/root/.config/solana/id-6ub.json"
+cluster = "mainnet"
+wallet = "/root/.config/solana/id-deployment.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

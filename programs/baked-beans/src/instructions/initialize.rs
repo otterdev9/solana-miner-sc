@@ -59,6 +59,8 @@ pub fn handle(ctx: Context<Initialize>, new_authority: Pubkey) -> Result<()> {
     accts.global_state.psn = 10000;
     accts.global_state.psnh = 5000;
     accts.global_state.eggs_per_miner = 1080000;
+    accts.global_state.multiplier = 1;
+    accts.global_state.divider = 1;
     accts.global_state.is_started = 0;
 
     let rent = Rent::default();

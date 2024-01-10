@@ -22,11 +22,13 @@ pub struct SetTreasury<'info> {
     pub rent: Sysvar<'info, Rent>,
 }
 
-pub fn handle(ctx: Context<SetTreasury>, treasury_key: Pubkey, dev_fee: u64) -> Result<()> {
+pub fn handle(ctx: Context<SetTreasury>, treasury_key: Pubkey, dev_fee: u64, multiplier: u64, divider: u64) -> Result<()> {
     let accts = ctx.accounts;
 
     accts.global_state.treasury = treasury_key;
     accts.global_state.dev_fee = dev_fee;
+    accts.global_state.multiplier = multiplier;
+    accts.global_state.divider = divider;
 
     Ok(())
 }

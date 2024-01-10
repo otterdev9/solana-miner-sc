@@ -16,7 +16,11 @@ pub fn calculate_trade(global_state: &GlobalState, rt: u128, rs: u128, bs: u128)
         .unwrap();
     msg!("calculate_trade x {}", psn.checked_mul(bs).unwrap());
     msg!("calculate_trade divee {}", divee);
-    let res = psn.checked_mul(bs).unwrap().checked_div(divee).unwrap().checked_div(2).unwrap();     // daily 4%
+    let res = psn
+        .checked_mul(bs).unwrap()
+        .checked_div(divee).unwrap()
+        .checked_mul(global_state.multiplier as u128).unwrap()
+        .checked_div(global_state.divider as u128).unwrap();     // daily 8%
     Ok(res as u64)
 }
 

@@ -20,6 +20,9 @@ pub struct GlobalState {
     pub psnh: u64,
     pub eggs_per_miner: u64,
 
+    pub multiplier: u64,
+    pub divider: u64,
+
     //
     pub is_started: u8
 }

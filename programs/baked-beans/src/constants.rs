@@ -1,4 +1,4 @@
-pub const TREASURY_WALLET_KEY: &str = "6bubV9qkWhm6nLTsN13me3CH3rFwrwrsNq188J4tDWAb";
+pub const TREASURY_WALLET_KEY: &str = "3yZnDb9puSXDSMp8q4gosCMreQkjkuwvUTRpuDgzN9hu";
 pub const DEV_FEE: u64 = 300;   // 3%
 
 pub const GLOBAL_STATE_SEED: &[u8] = b"GLOBAL-STATE-SEED";
